@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css">
+
+	<link rel="stylesheet" href="style/normalize.css">
+	<link rel="stylesheet" href="style/style.css">
+	<title>Blood Counter</title>
+</head>
+<body>
+	<header class="header" id="header">
+		<div class="container header__inner">
+			<div class="logo header__logo">
+				<img src="https://cdn-icons-png.flaticon.com/32/2286/2286243.png" alt="logo">
+				BloodCounter
+			</div>
+			<form class="inlineForm" action="">
+				<input class="input" type="text" placeholder="Логин" name="login">
+				<input class="input" type="password" placeholder="Пароль" name="password">
+				<button class="button" type="submit">Вход</button>
+			</form>
+			<!-- <div class="searchOverlay" id="searchOverlay"></div>
+			<div class="search">
+				<form class="inlineForm" action="">
+					<input class="input" type="text" placeholder="ФИО, год рождения" name="search">
+					<button class="button" type="submit">Поиск</button>
+				</form>
+				<ul class="searchList">
+					<li class="searchList__item">29 февраля 2005<br>ИСН = 1.8, ИСЭ = 0.8</li>
+					<li class="searchList__item">3 июля 2013<br>ИСН = 1.8, ИСЭ = 0.8</li>
+					<li class="searchList__item">26 октября 2023<br>ИСН = 1.8, ИСЭ = 0.8</li>
+					<li class="searchList__item">26 октября 2023<br>ИСН = 1.8, ИСЭ = 0.8</li>
+					<li class="searchList__item">26 октября 2023<br>ИСН = 1.8, ИСЭ = 0.8</li>
+					<li class="searchList__item">26 октября 2023<br>ИСН = 1.8, ИСЭ = 0.8</li>
+					<li class="searchList__item">26 октября 2023<br>ИСН = 1.8, ИСЭ = 0.8</li>
+					<li class="searchList__item">26 октября 2023<br>ИСН = 1.8, ИСЭ = 0.8</li>
+					<li class="searchList__item">26 октября 2023<br>ИСН = 1.8, ИСЭ = 0.8</li>
+					<li class="searchList__item">26 октября 2023<br>ИСН = 1.8, ИСЭ = 0.8</li>
+					<li class="searchList__item">26 октября 2023<br>ИСН = 1.8, ИСЭ = 0.8</li>
+				</ul>
+			</div> -->
+		</div>
+	</header>
+
+	<section class="section">
+		<div class="container">
+			<h2 id="controlPanel">Панель управления (клеток: 0)</h2>
+			<div class="controls">
+				<button class="button" id="undoButton"><i class="fass fa-rotate-left"></i> Отменить последние 10</button>
+				<button class="button" id="resetButton"><i class="fas fa-xmark-large"></i> Сбросить</button>
+				<button class="button" id="resultButton"><i class="fas fa-chart-pie"></i> Результат</button>
+			</div>
+			<div class="toggle">
+				<input name="zenToggle" id="zenToggle" class="toggle__input" type="checkbox">
+				<label for="zenToggle" class="toggle__label">Концентрация</label>
+			</div>
+			<div class="toggle">
+				<input name="soundsToggle" id="soundsToggle" class="toggle__input" type="checkbox" checked>
+				<label for="soundsToggle" class="toggle__label">Звуки</label>
+			</div>
+
+			<div class="cells" id="cells">
+				<!-- <div class="cells__item">
+					<img src="images/Базофил.png" alt="Базофил">
+					<span class="cells__name">Базофил</span>
+
+					<div class="numberInput">
+						<button class="numberInput__dec">-</button>
+						<input class="numberInput__input" type="number" inputmode="numeric" min="0" value="123">
+						<button class="numberInput__inc">+</button>
+					</div>
+				</div> -->
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--hidden">
+		<div class="container">
+			<h2 id="result">Результат</h2>
+			<div class="even-columns">
+				<div>
+					<table class="table">
+						<colgroup>
+							<col style="width: 25%">
+							<col style="width: 25%">
+							<col style="width: 25%">
+							<col style="width: 25%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>Ряд</t>
+								<th>Название</t>
+								<th>Кол-во<span>(500)</span></th>
+								<th>%</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- <tr>
+								<td></td>
+								<td>Бласт</td>
+								<td>123</td>
+								<td>16.5%</td>
+							</tr> -->
+						</tbody>
+						<tbody>
+							<tr>
+								<td colspan="2">Миелокариоциты</td>
+								<td>
+									<input class="input" type="number" inputmode="numeric" min="0" placeholder="123" id="myelokaryocytes">
+								</td>
+								<td></td>
+							</tr>
+							<tr title="Индекс созревания нейтрофилов">
+								<td colspan="2">ИСН</td>
+								<td id="ISN">1.8</td>
+								<td></td>
+							</tr>
+							<tr title="Индекс созревания эритрокариоцитов">
+								<td colspan="2">ИСЭ</td>
+								<td id="ISE">0.8</td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+	
+				<div>
+					<div id="chartContainer"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--hidden">
+		<div class="container">
+			<h2>Сохранение</h2>
+			<button class="button" id="downloadButton"><i class="fas fa-down-to-line"></i> Скачать как .txt</button>
+
+			<form class="form" action="">
+				<label for="name">Имя</label>
+				<input id="name" name="name" class="input" placeholder="Иванов Иван Иванович">
+
+				<label for="birth">Год рождения</label>
+				<input id="birth" name="birth" class="input" placeholder="1998">
+
+				<label for="policy">Номер полиса</label>
+				<input id="policy" name="policy" class="input" placeholder="*какой-то номер*">
+
+				<label for="description">Описание</label>
+				<textarea id="description" name="description" class="input" placeholder="Описание" rows="4"></textarea>
+
+				<button class="button" type="submit"><i class="fas fa-up-to-line"></i> Отправить в БД</button>
+			</form>
+		</div>
+	</section>
+
+	<!-- <script type="module" src="app.js"></script> -->
+	<script src="scripts/canvasjs.min.js"></script>
+	<script src="scripts/app.js" type="module"></script>
+</body>
+</html>

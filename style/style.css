@@ -1,0 +1,500 @@
+:root {
+	--clr-primary-50: hsl(266, 100%, 10%);
+	--clr-primary-100: hsl(266, 100%, 30%);
+	--clr-primary-200: hsl(266, 100%, 40%);
+	--clr-primary-300: hsl(266, 100%, 50%);
+	--clr-primary-400: hsl(266, 100%, 56%);
+	--clr-primary-500: hsl(266, 100%, 75%);
+	--clr-primary-600: hsl(266, 100%, 80%);
+	--clr-primary-700: hsl(266, 100%, 85%);
+	--clr-primary-800: hsl(266, 100%, 90%);
+	--clr-primary-900: hsl(266, 100%, 95%);
+
+	--ff-primary: 'Montserrat', sans-serif;
+
+	--fs-400: 1rem;
+	--fs-800: 1.5rem;
+	--fs-900: 2rem;
+
+	--zx-header: 1;
+}
+
+/* big screen */
+/* @media (min-width: 50em) {
+	:root {
+		--fs-body: var(--fs-500);
+		--fs-primary-heading: var(--fs-900);
+		--fs-secondary-heading: var(--fs-800);
+		--fs-nav: var(--fs-300);
+	}
+} */
+
+
+
+/* general styling */
+body {
+	font-size: var(--fs-400);
+	font-family: var(--ff-primary);
+	color: var(--clr-primary-50);
+}
+*, *::after, *::before {
+	box-sizing: border-box;
+}
+.container {
+	width: 100%;
+	max-width: 1110px;
+	padding: 0 1em;
+	margin: 0 auto;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-thumb {
+	background: var(--clr-primary-700);
+	border-radius: 100px;
+}
+
+
+
+
+/* header */
+.header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+
+	padding: .75em 0;
+	background: var(--clr-primary-400);
+	color: white;
+
+	z-index: var(--zx-header);
+}
+.header__inner {
+	display: flex;
+}
+.header__inner > *:last-child {
+	margin-left: auto;
+}
+
+
+
+/* logo */
+.logo {
+	display: inline-flex;
+	align-items: center;
+
+	user-select: none;
+	font-size: var(--fs-800);
+	font-weight: 600;
+}
+.logo img {
+	width: var(--fs-800);
+	margin-right: .5em;
+
+	/* https://stackoverflow.com/questions/22416717/css-filters-to-create-a-solid-border-around-an-object/75685100#75685100 */
+	filter: 
+        drop-shadow( 1px  0px 1px white)
+        drop-shadow(-1px  0px 1px white)
+        drop-shadow( 0px  1px 1px white)
+        drop-shadow( 0px -1px 1px white);
+}
+.header__logo {
+	margin-right: 1em;
+}
+
+
+
+/* inlineForm */
+.input {
+	padding: .5em .8em;
+	border-radius: .7em;
+	border: 1px solid #ccc;
+
+	width: 100%;
+	min-width: 0;
+
+	resize: vertical; /* textarea */
+}
+.button {
+	padding: .5em 1em;
+	border: none;
+
+	cursor: pointer;
+	border-radius: .7em;
+
+	background: var(--clr-primary-500);
+	color: #fff;
+}
+.button:hover {background: var(--clr-primary-600)}
+
+
+
+.toggle {
+	display: flex;
+	align-items: center;
+	margin: .5em 0;
+}
+.toggle__label {
+	cursor: pointer;
+	user-select: none;
+}
+.toggle__input {
+	appearance: none;
+	-webkit-appearance: none;
+	position: relative;
+
+	width: 3em;
+	height: 1.6em;
+	margin-right: .5em;
+
+	cursor: pointer;
+	border-radius: 100em;
+	background: #ccc;
+
+	transition: .2s background;
+}
+.toggle__input::after {
+	content: '';
+	position: absolute;
+
+	width: 1.2em;
+	height: 1.2em;
+	margin: 0.2em;
+
+	border-radius: 100em;
+	background: #fff;
+
+	transition: .2s transform;
+}
+.toggle__input:checked {
+	background: var(--clr-primary-500);
+}
+.toggle__input:checked::after {
+	transform: translateX(1.4em);
+}
+
+
+
+
+.inlineForm {
+	display: grid;
+	grid-auto-flow: column;
+	gap: .15em;
+}
+.inlineForm > *:not(:first-child):not(:last-child) {border-radius: 0}
+.inlineForm > *:first-child {border-top-right-radius: 0; border-bottom-right-radius: 0}
+.inlineForm > *:last-child {border-top-left-radius: 0; border-bottom-left-radius: 0}
+
+.inlineForm .input {
+	border: none;
+}
+
+.search {
+	position: relative;
+}
+
+
+
+/* searchList */
+.searchList {
+	position: absolute;
+	top: calc(100% + .2em);
+
+	width: 100%;
+	height: 500px;
+	max-height: 70vh;
+	margin: 0;
+	padding: .5em;
+	
+	line-height: 1.4;
+	overflow-y: auto;
+	list-style: none;
+	background: var(--clr-primary-500);
+	/* box-shadow: 0 0 25px #fff; */
+}
+
+.searchList__item {
+	padding: .5em 1em;
+	border-bottom: 1px solid var(--clr-primary-800);
+
+	cursor: pointer;
+	transition: .1s;
+}
+.searchList__item:last-child {border-bottom: none}
+.searchList__item:hover {background: var(--clr-primary-600)}
+
+.searchOverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #0004;
+}
+
+
+
+
+
+/* section */
+.section {
+	margin: 5em 0;
+	transition: .5s opacity;
+}
+.section:last-of-type {margin: 0}
+
+.section--hidden {
+	display: none;
+	opacity: 0;
+}
+
+.controls {
+	display: inline-grid;
+	grid-auto-flow: column;
+
+	gap: .3em;
+}
+
+
+
+/* numberInput */
+input[type="number"]::-webkit-inner-spin-button {display: none} /* chrome */
+input[type="number"] {-moz-appearance: textfield} /* firefox */
+
+.numberInput {
+	display: flex;
+}
+.numberInput__input {
+	width: 3em;
+	border: none;
+
+	text-align: center;
+	font-size: 1em;
+
+	background: var(--clr-primary-900);
+}
+
+.numberInput__dec,
+.numberInput__inc {
+	border: none;
+	padding: 0 .5em;
+
+	cursor: pointer;
+	font-size: 1.5em;
+
+	color: var(--clr-primary-400);
+	background: var(--clr-primary-700);
+}
+.numberInput__dec:hover,
+.numberInput__inc:hover {
+	background: var(--clr-primary-600);
+}
+.numberInput__dec {border-radius: 1em 0 0 1em}
+.numberInput__inc {border-radius: 0 1em 1em 0}
+
+
+
+
+/* cells */
+.cells {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(7em, 1fr));
+	justify-items: center;
+	gap: 2em;
+
+	margin-top: 2em;
+}
+.cells__item {
+	display: grid;
+	grid-template-rows: auto auto 2em;
+	justify-items: center;
+
+	cursor: pointer;
+	word-break: break-all;
+
+	user-select: none;
+	/* border: 1px solid #000; */
+
+	opacity: .5;
+}
+.cells__item img {
+	max-width: 3.5em;
+}
+
+.cells--zen {
+	grid-template-columns: repeat(auto-fit, minmax(4em, 1fr));
+	gap: 1.5em;
+}
+.cells--zen .cells__item {
+	grid-template-rows: auto auto;
+	width: 5em;
+}
+.cells--zen .numberInput {display: none}
+
+
+
+.even-columns {
+	/* display: flex; */
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: 1fr 1fr;
+	gap: 1em;
+
+	/* overflow: hidden; */
+	overflow: visible; /* for shadow of table */
+}
+.even-columns > * {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	flex: 1;
+	/* border: 1px solid red; */
+}
+
+/* table */
+.table {
+	width: 100%;
+	border-collapse: collapse;
+
+	border-radius: .7em .7em 0 0;
+	overflow: hidden;
+	table-layout: fixed;
+
+	box-shadow: 0 0 20px #0002;
+}
+.table thead {
+	text-align: left;
+	background: var(--clr-primary-400);
+	color: #fff;
+}
+
+.table thead span { /* Кол-во (500) - это эта скобочка снизу */
+	display: block;
+	font-weight: normal;
+}
+.table tbody span { /* Клетки нейтрофи­льного ряда (123) */
+	display: block;
+	font-weight: bold;
+}
+
+.table th {padding: .5em 0 .5em 1.5em}
+.table td {padding: .25em 0 .25em 1.5em}
+.table tr > * {word-break: break-word}
+
+.table tr {border-bottom: 1px solid var(--clr-primary-800)}
+.table tr:nth-of-type(even) {background: var(--clr-primary-900)}
+
+.table tbody {border-bottom: 2.5px solid var(--clr-primary-400)}
+.table tbody:last-child { /* ИСН, ИСЭ */
+	font-weight: bold;
+	border-bottom: none;
+}
+
+
+/* Клетки нейтрофильного ряда, Клетки эритроидного ряда */
+.table td:first-child[rowspan] {
+	background: white;
+	border-right: 1px solid var(--clr-primary-800);
+	padding: 0 .5em;
+}
+
+
+
+#chartContainer {
+	width: 100%;
+	height: 300px;
+	z-index: -1; /* for shadow of table */
+}
+.canvasjs-chart-credit {display: none}
+
+
+
+
+
+
+
+
+/* form */
+.form {
+	display: grid;
+	grid-template-columns: minmax(5em, 1fr) 4fr;
+	gap: 1em;
+
+	/* max-width: 50em; */
+	padding: 2em 0;
+
+	text-align: right;
+}
+.form label {
+	padding-top: .15em;
+}
+.form > *:last-child {
+	/* border: 1px solid #000; */
+	grid-column: 2;
+	width: max-content;
+	justify-self: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* medium device */
+@media (max-width: 50em) {
+	.even-columns {
+		/* flex-direction: column; */
+		grid-auto-flow: row;
+		grid-template-columns: none;
+		gap: 1em;
+	}
+}
+
+/* small device */
+@media (max-width: 40em) {
+	.container {padding: 0 .5em}
+	.header__logo {display: none}
+
+	.header__inner > *:last-child {
+		width: 100%;
+		margin-left: 0;
+	}
+
+	.cells {
+		gap: 1.5em 1em;
+		font-size: .85em;
+	}
+	.table {
+		font-size: 0.85em;
+	}
+
+	#chartContainer {
+		height: 150px;
+	}
+}
+
+/* ultra small device */
+@media (max-width: 24em) {
+	.controls {
+		grid-auto-flow: row;
+		/* justify-content: stretch; */
+		width: 100%;
+	}
+}
