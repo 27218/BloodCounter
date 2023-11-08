@@ -68,7 +68,7 @@ document.querySelectorAll(".cells__item").forEach(cells__item => {
 	let numberInput__inc   = cells__item.querySelector(".numberInput__inc");
 	let numberInput__dec   = cells__item.querySelector(".numberInput__dec");
 
-	cells__item.onclick = e => e.path.includes(numberInput) || handleOnclick(numberInput__input, true);
+	cells__item.onclick = e => e.composedPath().includes(numberInput) || handleOnclick(numberInput__input, true);
 	numberInput__inc.onclick = e => handleOnclick(numberInput__input, true);
 	numberInput__dec.onclick = e => handleOnclick(numberInput__input, false);
 
