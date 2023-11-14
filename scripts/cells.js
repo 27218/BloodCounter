@@ -7,6 +7,7 @@ import {addToHistory} from "./history.js";
 const template = name => `<div class="cells__item">
 	<img ondragstart="return false" src="images/${name}.png" alt="${name}">
 	<span class="cells__name">${name}</span>
+	<span class="cells__count">0</span>
 
 	<div class="numberInput">
 		<button class="numberInput__dec">-</button>
@@ -28,9 +29,15 @@ function updateHeader() {
 function updateOpacity(input) {
 	input.parentNode.parentNode.style.opacity = input.value == 0 ? .5 : 1;
 }
+function updateCount(input) {
+	input.parentNode.parentNode.querySelector(".cells__count").innerText = input.value;
+}
 function updateGraphics() {
 	updateHeader();
-	inputs.map(updateOpacity);
+	inputs.map(input => {
+		updateOpacity(input);
+		updateCount(input);
+	});
 }
 
 
@@ -49,6 +56,7 @@ function handleOnclick(input, increase) {
 	if(!valueChanged) return;
 
 	updateHeader();
+	updateCount(input);
 	updateOpacity(input);
 	addToHistory(input, value);
 
@@ -56,6 +64,7 @@ function handleOnclick(input, increase) {
 }
 function handleOnchange(input) {
 	updateHeader();
+	updateCount(input);
 	updateOpacity(input);
 	addToHistory(input, input.previousValue || 0);
 

@@ -319,6 +319,9 @@ input[type="number"] {-moz-appearance: textfield} /* firefox */
 
 	opacity: .5;
 }
+.cells__count {
+	display: none;
+}
 .cells__item img {
 	max-width: 3.5em;
 }
@@ -332,6 +335,7 @@ input[type="number"] {-moz-appearance: textfield} /* firefox */
 	width: 5em;
 }
 .cells--zen .numberInput {display: none}
+.cells--zen .cells__count {display: block}
 
 
 
